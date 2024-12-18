@@ -1,5 +1,5 @@
 #  Initialize oh my posh theme
-oh-my-posh.exe init pwsh | Invoke-Expression
+oh-my-posh.exe init pwsh --config "C:\Users\micha\Desktop\Terminal\Powershell\ohMyPosh\Poshthemes\thm1.omp.json" | Invoke-Expression
 
 
 

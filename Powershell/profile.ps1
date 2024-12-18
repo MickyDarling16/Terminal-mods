@@ -10,5 +10,7 @@ Remove-Module PSReadLine -ErrorAction SilentlyContinue
 Import-Module PSReadLine -RequiredVersion 2.4.0
 
 # Enable predictive IntelliSense
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
+# Set-PSReadLineOption -PredictionSource History
+# Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
+Set-PSReadLineOption -PredictionSource None

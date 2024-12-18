@@ -4,11 +4,21 @@
 		{
 			"alignment": "left",
 			"segments": [
+        {
+          "_comment": "Operating System Icon Segment",
+          "foreground": "#0b539f",
+          "properties": {
+            "windows": "\ue62a "
+          },
+          "style": "powerline",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+          "type": "os"
+        },
 				{
 					"_comment": "Administrator Segment",
 					"foreground": "#E06C75",
 					"style": "plain",
-					"template": "Admin <#ffffff>in</> ",
+					"template": "<#ffffff>as</> Admin ",
 					"type": "root"
 				},
 				{
@@ -18,7 +28,7 @@
 						"style": "folder"
 					},
 					"style": "plain",
-					"template": "{{ .Path }} ",
+					"template": "<#ffffff>in</> {{ .Path }} ",
 					"type": "path"
 				},
 				{
@@ -32,6 +42,7 @@
 					"type": "git"
 				},
 				{
+          "_comment": "On Error Icon Segment",
 					"foreground": "#C94A16",
 					"style": "plain",
 					"template": "x ",
@@ -48,7 +59,7 @@
 				{
 					"foreground": "#63F08C",
 					"style": "plain",
-					"template": "➜ ",
+					"template": "➜  ",
 					"type": "text"
 				}
 			],

@@ -1,0 +1,62 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+      {
+        "alignment": "left",
+        "segments": [
+          {
+            "_comment": "Administrator Segment",
+
+            "foreground": "#E06C75",
+            "style": "plain",
+            "template": "Admin <#ffffff>in</> ",
+            "type": "root"
+          },
+          {
+            "_comment": "Folder Name Segment",
+
+            "foreground": "#55B9C4",
+            "properties": {
+              "style": "folder"
+            },
+            "style": "plain",
+            "template": "{{ .Path }} ",
+            "type": "path"
+          },
+          {
+            "_comment": "Git Information Segment",
+
+            "foreground": "#C678DD",
+            "properties": {
+              "fetch_status": true
+            },
+            "style": "plain",
+            "template": "<#ffffff>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+            "type": "git"
+          },
+          {
+            "foreground": "#C94A16",
+            "style": "plain",
+            "template": "x ",
+            "type": "status"
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "_comment": "Newline Segment. Right below the first line of prompt`",
+        "alignment": "left",
+        "newline": true,
+        "segments": [
+          {
+            "foreground": "#63F08C",
+            "style": "plain",
+            "template": "\u279c ",
+            "type": "text"
+          }
+        ],
+        "type": "prompt"
+      }
+    ],
+    "version": 3
+  }

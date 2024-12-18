@@ -1,4 +1,4 @@
-$scriptsPath = "C:\Users\user\Desktop\Terminal\Powershell\"
+$scriptsPath = "C:\Users\user\Desktop\Terminal\Powershell\OhMyPosh"
 Get-ChildItem -Path $scriptsPath -Filter *.ps1 | ForEach-Object {
     . $_.FullName
 }

@@ -10,3 +10,16 @@ if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
 if (-not (Get-Module -Name Terminal-Icons)) {
     Import-Module -Name Terminal-Icons
 }
+
+
+if (-not (Get-Command zoxide -ErrorAction SilentlyContinue)) {
+   Write-Host "Zoxide not found. Installing via winget..."
+   winget install zoxide
+}
+
+# Add to profile if not already there
+$profileContent = Get-Content $PROFILE -ErrorAction SilentlyContinue
+if (-not ($profileContent -match "zoxide init")) {
+   Write-Host "Adding zoxide to PowerShell profile..."
+   Add-Content $PROFILE "`nInvoke-Expression (& { (zoxide init powershell | Out-String) })"
+}

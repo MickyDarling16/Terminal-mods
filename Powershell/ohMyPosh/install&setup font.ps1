@@ -1,8 +1,3 @@
-#  Initialize oh my posh theme
-oh-my-posh.exe init pwsh --config "C:\Users\micha\Desktop\Terminal\Powershell\ohMyPosh\Poshthemes\thm1.omp.json" | Invoke-Expression
-
-
-
 # Check if Oh My Posh is installed
 if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) {
     Write-Host "Oh My Posh is not installed. Installing now..."

@@ -52,6 +52,30 @@
 			"type": "prompt"
 		},
 		{
+			"_comment": "Right Prompt: User Session and python environment (if active)",
+			"alignment": "right",
+			"segments": [
+				{
+					"type": "session",
+					"style": "diamond",
+					"foreground": "#FFE082",
+					"template": "{{ if .SSHSession }} {{ end }}{{ .HostName }}/{{ .UserName }}"
+				},
+				{
+					"type": "python",
+					"style": "plain",
+					"foreground": "#0ca3ee",
+					"template": " ( {{ .Venv }}) ",
+					"properties": {
+						"display_default": true,
+						"display_mode": "context",
+						"folder_name_fallback": true
+					}
+				}
+			],
+			"type": "rprompt"
+		},
+		{
 			"_comment": "Newline Segment. Right below the first line of prompt`",
 			"alignment": "left",
 			"newline": true,

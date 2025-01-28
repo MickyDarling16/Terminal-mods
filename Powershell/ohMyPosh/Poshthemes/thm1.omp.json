@@ -4,16 +4,16 @@
 		{
 			"alignment": "left",
 			"segments": [
-        {
-          "_comment": "Operating System Icon Segment",
-          "foreground": "#0b539f",
-          "properties": {
-            "windows": "\ue62a "
-          },
-          "style": "powerline",
-          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
-          "type": "os"
-        },
+				{
+					"_comment": "Operating System Icon Segment",
+					"foreground": "#0b539f",
+					"properties": {
+						"windows": " "
+					},
+					"style": "powerline",
+					"template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+					"type": "os"
+				},
 				{
 					"_comment": "Administrator Segment",
 					"foreground": "#E06C75",
@@ -42,7 +42,7 @@
 					"type": "git"
 				},
 				{
-          "_comment": "On Error Icon Segment",
+					"_comment": "On Error Icon Segment",
 					"foreground": "#C94A16",
 					"style": "plain",
 					"template": "x ",
@@ -52,7 +52,6 @@
 			"type": "prompt"
 		},
 		{
-			"_comment": "Right Prompt: User Session and python environment (if active)",
 			"alignment": "right",
 			"segments": [
 				{
@@ -60,17 +59,6 @@
 					"style": "diamond",
 					"foreground": "#FFE082",
 					"template": "{{ if .SSHSession }} {{ end }}{{ .HostName }}/{{ .UserName }}"
-				},
-				{
-					"type": "python",
-					"style": "plain",
-					"foreground": "#0ca3ee",
-					"template": " ( {{ .Venv }}) ",
-					"properties": {
-						"display_default": true,
-						"display_mode": "context",
-						"folder_name_fallback": true
-					}
 				}
 			],
 			"type": "rprompt"

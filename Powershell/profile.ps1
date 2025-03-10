@@ -8,8 +8,8 @@ oh-my-posh init pwsh --config "C:\Users\micha\Desktop\Terminal-mods\Powershell\o
 # Remove any existing PSReadLine module
 Remove-Module PSReadLine -ErrorAction SilentlyContinue
 
-# Import the specific version you want
-Import-Module PSReadLine -RequiredVersion 2.4.0
+# Import the specific version you want (NOT REALLY REQUIRED AS THIS WAS TO ACTIVATE LIST VIEW FOR HISTORY)
+# Import-Module PSReadLine -RequiredVersion 2.4.0
 
 # Enable predictive IntelliSense
 Set-PSReadLineOption -PredictionSource History

@@ -61,7 +61,7 @@
 					"template": "{{ if .SSHSession }} {{ end }}{{ .HostName }}/{{ .UserName }}"
 				}
 			],
-			"type": "rprompt"
+			"type": "prompt"
 		},
 		{
 			"_comment": "Newline Segment. Right below the first line of prompt`",

@@ -17,3 +17,13 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 # Set-PSReadLineOption -PredictionSource None
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
+# Remove Duplicate History
+function Remove-HistoryDuplicates {
+    $historyPath = (Get-PSReadlineOption).HistorySavePath
+    $uniqueHistory = Get-Content $historyPath | Select-Object -Unique
+    $uniqueHistory | Set-Content $historyPath
+    Write-Host "Duplicate entries removed from PowerShell history."
+}
+
+Remove-HistoryDuplicates

@@ -1,9 +1,6 @@
-$scriptsPath = "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\"
-Get-ChildItem -Path $scriptsPath -Filter *.ps1 | ForEach-Object {
-    . $_.FullName
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+    oh-my-posh init pwsh --config "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\Poshthemes\thm1.omp.json" | Invoke-Expression
 }
-
-oh-my-posh init pwsh --config "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\Poshthemes\thm1.omp.json" | Invoke-Expression
 
 # Remove any existing PSReadLine module
 Remove-Module PSReadLine -ErrorAction SilentlyContinue

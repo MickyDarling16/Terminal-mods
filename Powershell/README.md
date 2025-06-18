@@ -22,11 +22,11 @@ This folder will
 
 2. Create the default $PROFILE `folder` if it does not exist
 
-    NOTE: ONLY THE FOLDER MATTERS
+    NOTE: ONLY THE FOLDER MATTERS. i.e Should Exist
 
     - Check if it already exists.
     ```sh
-    Test $PROFILE
+    Test-Path $PROFILE
     ```
     - Create if it does not
     ```sh
@@ -41,6 +41,12 @@ This folder will
 4. Run the `CUSTOM PROFILE` file.
     ```sh
     $customProfilePATH
+    ```
+
+5. Create symbolic link for Terminal Settings file:
+    ```sh
+    C:\Users\micha\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+    New-Item -ItemType SymbolicLink -Path $PROFILE -Target $customProfilePATH
     ```
 
 6. Verify that the scripts have been executed successfully by checking the expected changes or outputs.

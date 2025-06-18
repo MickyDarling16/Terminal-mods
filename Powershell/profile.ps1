@@ -1,10 +1,14 @@
-if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
-    oh-my-posh init pwsh --config "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\Poshthemes\thm1.omp.json" | Invoke-Expression
-}
+oh-my-posh init pwsh --config "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\Poshthemes\thm1.omp.json" | Invoke-Expression
+
+# Import the Terminal-Icons module
+Import-Module -Name Terminal-Icons -Force -ErrorAction Stop
+
+# Import the PSReadLine module
 
 # Remove any existing PSReadLine module
 Remove-Module PSReadLine -ErrorAction SilentlyContinue
 
+# Import-Module -Name PSReadLine -Force -ErrorAction Stop
 # Import the specific version you want (NOT REALLY REQUIRED AS THIS WAS TO ACTIVATE LIST VIEW FOR HISTORY)
 # Import-Module PSReadLine -RequiredVersion 2.4.0
 

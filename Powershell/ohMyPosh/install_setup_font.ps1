@@ -14,10 +14,6 @@ if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) {
     }
 }
 
-
-
-
-
 # Check if Nerd Font is installed by looking in Font folder
 $fontPaths = @(
     "$env:LOCALAPPDATA\Microsoft\Windows\Fonts\CaskaydiaCove*",
@@ -30,23 +26,19 @@ Write-Host "Checking for CaskaydiaCove Nerd Font..."
 if (-not $fontInstalled) {
     Write-Host "CaskaydiaCove Nerd Font not found. Installing..."
     $fontName = "CascadiaCode"
-    $process = Start-Process oh-my-posh -ArgumentList "font install $fontName" -NoNewWindow -Wait -PassThru
-
-    if ($process.ExitCode -eq 0) {
-        Write-Host "Font installed successfully"
-    } else {
-        Write-Host "Font installation failed"
+    try {
+        $process = Start-Process oh-my-posh -ArgumentList "font install $fontName" -NoNewWindow -Wait -PassThru
+        if ($process.ExitCode -eq 0) {
+            Write-Host "Font installed successfully"
+        } else {
+            Write-Host "Font installation failed"
+        }
+    } catch {
+        Write-Host "Font installation encountered an error: $_"
     }
 }
 Write-Host "Oh My Posh and Nerd Font installation script completed."
 
-
 $scriptsPath = "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\misc_modules.ps1"
 Write-Host "Moving on to misc_modules.ps1 script..."
-if (Test-Path $scriptsPath) {
-    . $scriptsPath
-    Write-Host "Loaded: $scriptsPath"
-} else {
-    Write-Host "File not found: $scriptsPath"
-}
 # End of script

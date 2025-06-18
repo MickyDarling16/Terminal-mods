@@ -45,7 +45,6 @@ This folder will
 
 5. Create symbolic link for Terminal Settings file:
     ```sh
-    C:\Users\micha\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
     New-Item -ItemType SymbolicLink -Path $PROFILE -Target $customProfilePATH
     ```
 

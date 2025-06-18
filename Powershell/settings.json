@@ -66,7 +66,7 @@
         },
         {
             // Close tab (Ctrl+Shift+W)
-            "id": null,
+            "id": "Terminal.CloseTab",
             "keys": "ctrl+shift+w"
         },
         {
@@ -81,7 +81,7 @@
         },
         {
             // Next tab (Ctrl+Tab)
-            "id": null,
+            "id": "Terminal.NextTab",
             "keys": "ctrl+tab"
         },
         {

@@ -1,15 +1,9 @@
 {
-    // For documentation on Windows Terminal settings, see:
     "$help": "https://aka.ms/terminal-documentation",
-
-    // JSON schema for validation and IntelliSense
     "$schema": "https://aka.ms/terminal-profiles-schema",
-
-    // Custom actions available in the terminal
     "actions": 
     [
         {
-            // Copy action (multi-line)
             "command": 
             {
                 "action": "copy",
@@ -18,12 +12,14 @@
             "id": "User.copy.644BA8F2"
         },
         {
-            // Paste action
             "command": "paste",
             "id": "User.paste"
         },
         {
-            // Split pane (duplicate current pane)
+            "command": "find",
+            "id": "User.find"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -33,146 +29,112 @@
             "id": "User.splitPane.A6751878"
         },
         {
-            // Find action
-            "command": "find",
-            "id": "User.find"
-        },
-        {
-            // Close pane action
             "command": "closePane",
             "id": "User.closePane"
         }
     ],
-
-    // Copy settings
-    "copyFormatting": "none", // Do not copy formatting
-    "copyOnSelect": true,     // Automatically copy when text is selected
-
-    // Default profile GUID (PowerShell)
+    "copyFormatting": "none",
+    "copyOnSelect": true,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-
-    // Keybindings for actions
     "keybindings": 
     [
         {
-            // Paste (Ctrl+V)
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
-            // Find (Ctrl+Shift+F)
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            // Close tab (Ctrl+Shift+W)
             "id": "Terminal.CloseTab",
             "keys": "ctrl+shift+w"
         },
         {
-            // Open new tab (Ctrl+T)
-            "id": "Terminal.OpenNewTab",
-            "keys": "ctrl+t"
+            "id": "User.paste",
+            "keys": "ctrl+v"
         },
         {
-            // Copy (Ctrl+C)
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+c"
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
         },
         {
-            // Next tab (Ctrl+Tab)
             "id": "Terminal.NextTab",
             "keys": "ctrl+tab"
         },
         {
-            // Split pane (Alt+Shift+D)
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.OpenNewTab",
+            "keys": "ctrl+t"
+        },
+        {
             "id": "User.splitPane.A6751878",
             "keys": "alt+shift+d"
         },
         {
-            // Close pane (Ctrl+W)
             "id": "User.closePane",
             "keys": "ctrl+w"
         },
         {
-            // Reopen closed tab (Ctrl+Shift+T)
             "id": "Terminal.ReopenClosedTab",
             "keys": "ctrl+shift+t"
         }
     ],
-
-    // Launch terminal maximized
     "launchMode": "maximized",
-
-    // New tab menu configuration
     "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
-
-    // Profile settings
     "profiles": 
     {
-        // Default settings for all profiles
         "defaults": 
         {
-            // Background image and opacity
             "backgroundImage": "C:\\Users\\micha\\Desktop\\Terminal-mods\\background\\tron.jpg",
             "backgroundImageOpacity": 0.32,
             "closeOnExit": "graceful",
-            // Font settings
             "font": 
             {
                 "face": "CaskaydiaCove Nerd Font"
             },
             "useAcrylic": true
         },
-        // List of available profiles
         "list": 
         [
             {
-                // Windows PowerShell profile (hidden)
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": true,
                 "name": "Windows PowerShell"
             },
             {
-                // Command Prompt profile (hidden)
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": true,
                 "name": "Command Prompt"
             },
             {
-                // Azure Cloud Shell profile (hidden)
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
                 "hidden": true,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
             },
             {
-                // Git Bash profile (hidden)
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
                 "hidden": true,
                 "name": "Git Bash",
                 "source": "Git"
             },
             {
-                // PowerShell profile (default, visible)
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "guid": "{1174bde1-7da4-5a74-a9f4-c37bab3bd0a8}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Microsoft.WSL"
             }
         ]
     },
-
-    // Color schemes (empty)
     "schemes": [],
-
-    // Themes (empty)
     "themes": []
 }

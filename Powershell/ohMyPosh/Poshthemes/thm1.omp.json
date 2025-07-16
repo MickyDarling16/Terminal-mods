@@ -8,10 +8,10 @@
 					"_comment": "Operating System Icon Segment",
 					"foreground": "#0b539f",
 					"properties": {
-						"windows": " "
+						"windows": ""
 					},
 					"style": "powerline",
-					"template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+					"template": "{{ if .WSL }}{{ end }}{{.Icon}}  ",
 					"type": "os"
 				},
 				{

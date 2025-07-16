@@ -1,5 +1,8 @@
 # This file contains configurations to be added to your ~/.bashrc file.
 
+# Explicitly set TERM for better color support in some environments
+export TERM="xterm-256color"
+
 # Oh My Posh initialization
 # Ensure thm1.omp.json is copied to ~/.poshthemes/
 if command -v oh-my-posh >/dev/null 2>&1 && [ -f "/mnt/c/Users/micha/Desktop/Terminal-mods/Powershell/ohMyPosh/Poshthemes/thm1.omp.json" ]; then
@@ -19,7 +22,7 @@ fi
 # History deduplication and settings
 # This helps keep your command history clean
 export HISTCONTROL=ignoredups:erasedups # Ignore duplicates and erase previous duplicates
-export HISTSIZE=10000                   # Number of lines or commands in the history list
+export HISTSIZE=10000                   # Number of lines or commands in the history file
 export HISTFILESIZE=10000               # Maximum number of lines contained in the history file
 shopt -s histappend                     # Append to the history file, don't overwrite it
 
@@ -60,14 +63,6 @@ function start-environment {
     cd "$current_location" || { echo "Could not navigate back to original directory."; return 1; }
 }
 
-# Alias ls to eza for enhanced output with icons and colors
-if command -v eza &> /dev/null; then # Changed 'exa' to 'eza'
-    alias ls='eza --icons --group-directories-first' # Changed 'exa' to 'eza'
-    alias ll='eza -alF --icons --group-directories-first' # Changed 'exa' to 'eza'
-    alias la='eza -a --icons --group-directories-first' # Changed 'exa' to 'eza'
-    alias l='eza -F --icons --group-directories-first' # Changed 'exa' to 'eza'
-fi
-
 # Aliases
 alias startVM="start-environment" # Alias for starting virtual environments
 # Note: The 'Remove-HistoryDuplicates' function from PowerShell doesn't have a direct
@@ -79,42 +74,13 @@ alias startVM="start-environment" # Alias for starting virtual environments
 # However, this is more complex and might not be what the user expects.
 # Sticking to the HISTCONTROL for simplicity.
 
-
-# Custom EXA_COLORS for more appealing output (similar to PowerShell)
-# Refer to 'man eza' for full list of options and color codes.
-# Format: <key>=<color_code>;<attribute_code>:<key>=...
-# Color Codes: 30-37 (foreground), 40-47 (background), 90-97 (bright foreground), 100-107 (bright background)
-# Attribute Codes: 01 (bold), 04 (underline), 05 (blink), 07 (reverse), 08 (concealed)
-export EZA_COLORS="
-# File types
-di=94: # directories (bright blue)
-fi=97: # regular files (bright white)
-ex=92: # executables (bright green)
-lc=96: # symlinks (bright cyan)
-or=91: # orphan symlinks (bright red)
-mi=91: # missing symlink target (bright red)
-pi=93: # pipes (bright yellow)
-so=95: # sockets (bright magenta)
-bd=93;01: # block device (bright yellow bold)
-cd=93;01: # character device (bright yellow bold)
-su=30;41: # setuid (black on red background)
-sg=30;46: # setgid (black on cyan background)
-st=30;44: # sticky bit on directory (black on blue background)
-ow=30;43: # others writable (black on yellow background)
-tw=30;42: # sticky and others writable (black on green background)
-
-# File attributes/metadata
-da=90: # dates (dark gray)
-in=90: # inode numbers (dark gray)
-fo=97: # folder name in detailed view (bright white)
-lp=90: # link count (dark gray)
-uu=94: # user (bright blue)
-gn=94: # group (bright blue)
-gu=92: # git uncommitted (bright green)
-gd=91: # git dirty (bright red)
-gt=93: # git tagged (bright yellow)
-gs=96: # git staged (bright cyan)
-gc=90: # git clean (dark gray)
-"
-
-# End of profile.sh
+# LS_COLORS setup for traditional 'ls' with rich colors
+# This will generate a default .dircolors file if one doesn't exist,
+# and then source it to apply LS_COLORS.
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias ll='ls -alF' # Standard 'll' alias
+    alias la='ls -A'
+    alias l='ls -CF'
+fi

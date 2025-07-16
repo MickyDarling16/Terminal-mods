@@ -20,19 +20,4 @@
     fi
 
     echo "Eza setup script completed. Now, you need to add aliases to your profile.sh."
-
-    # Instructions for adding aliases to profile.sh:
-    # Open your profile.sh file (e.g., using 'code ~/profile.sh' or 'nano ~/profile.sh')
-    # Add the following lines to the end of the file:
-
-    # # Alias ls to eza for enhanced output with icons and colors
-    # if command -v eza &> /dev/null; then # Changed 'exa' to 'eza'
-    #     alias ls='eza --icons --group-directories-first' # Changed 'exa' to 'eza'
-    #     alias ll='eza -alF --icons --group-directories-first' # Changed 'exa' to 'eza'
-    #     alias la='eza -a --icons --group-directories-first' # Changed 'exa' to 'eza'
-    #     alias l='eza -F --icons --group-directories-first' # Changed 'exa' to 'eza'
-    # fi
-
-    # After adding these lines, save profile.sh and then run 'source ~/.bashrc'
-    # or simply close and reopen your terminal.
     

@@ -1,18 +1,4 @@
 # This file contains configurations to be added to your ~/.bashrc file.
-
-# Explicitly set TERM for better color support in some environments
-export TERM="xterm-256color"
-
-# Clear existing LS_COLORS to avoid conflicts with exa_COLORS
-unset LS_COLORS
-
-# Custom EXA_COLORS for more appealing output (similar to PowerShell)
-# Refer to 'man exa' for full list of options and color codes.
-# Format: <key>=<color_code>;<attribute_code>:<key>=...
-# Color Codes: 30-37 (foreground), 40-47 (background), 90-97 (bright foreground), 100-107 (bright background)
-# Attribute Codes: 01 (bold), 04 (underline), 05 (blink), 07 (reverse), 08 (concealed)
-export EXA_COLORS="di=94:fi=97:ex=92:lc=96:or=91:mi=91:pi=93:so=95:bd=93;01:cd=93;01:su=30;41:sg=30;46:st=30;44:ow=30;43:tw=30;42:da=90:in=90:fo=97:lp=90:uu=94:gn=94:gu=92:gd=31:gt=93:gs=96:gc=90:"
-
 # Oh My Posh initialization
 # Ensure thm1.omp.json is copied to ~/.poshthemes/
 if command -v oh-my-posh >/dev/null 2>&1 && [ -f "/mnt/c/Users/micha/Desktop/Terminal-mods/Powershell/ohMyPosh/Poshthemes/thm1.omp.json" ]; then
@@ -83,19 +69,3 @@ alias startVM="start-environment" # Alias for starting virtual environments
 # alias dup='history -d $(history | cut -c 8- | sort -u | uniq -d | awk "{print \$1}")'
 # However, this is more complex and might not be what the user expects.
 # Sticking to the HISTCONTROL for simplicity.
-
-# Diagnostic: Check exa's color support just before defining aliases
-if command -v exa &> /dev/null; then
-    echo "--- exa color support check ---"
-    # This command should output a colored line if exa is capable of colors
-    exa --color=always --no-icons --no-filesize --no-time --no-perms --no-user --no-group --no-links --no-git --no-header -l /dev/null 2>/dev/null || true
-    echo "--- end exa color support check ---"
-fi
-
-# Alias ls to exa for enhanced output with icons and colors
-if command -v exa &> /dev/null; then
-    alias ls='exa -l --icons --group-directories-first --color=always' # Added --color=always
-    alias ll='exa -alF --icons --git --header --group-directories-first'
-    alias la='exa -a --icons --group-directories-first'
-    alias l='exa -F --icons --group-directories-first'
-fi

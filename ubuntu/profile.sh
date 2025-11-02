@@ -38,8 +38,8 @@ function start-environment {
 
     # Activate the virtual environment based on the argument
     if [[ "$1" == "--py13" ]]; then
-        if [ -f "dtscience/bin/activate" ]; then
-            source dtscience/bin/activate
+        if [ -f "/mnt/c/Users/micha/Desktop/projects/dtscience/dtscience/bin/activate" ]; then
+            source /mnt/c/Users/micha/Desktop/projects/dtscience/dtscience/bin/activate
             echo "Python 3.13 virtual environment activated."
         else
             echo "Error: dtscience/bin/activate not found."

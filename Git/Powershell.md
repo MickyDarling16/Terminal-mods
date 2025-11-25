@@ -91,7 +91,7 @@ With this configuration, when you run `git commit` without the `-m` flag, VS Cod
 ### View Git Configuration
 
 ```powershell
-git config --list
+git config --list --show-origin
 ```
 
 ### Update Git

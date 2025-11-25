@@ -30,28 +30,28 @@ function Remove-HistoryDuplicates {
 }
 
 # Function to start the virtual environment
-function start-environment {
-    param (
-        [switch] $py13,
-        [switch] $py12
-    ) 
-    $currentLocation = (Get-Location).Path
+# function start-environment {
+#     param (
+#         [switch] $py13,
+#         [switch] $py12
+#     ) 
+#     $currentLocation = (Get-Location).Path
 
 
-    Set-Location -Path C:\Users\micha\Desktop\projects
+#     Set-Location -Path C:\Users\micha\Desktop\projects
 
-    # Activate the virtual environment
-    if ($py13) {
-        dtscience\Scripts\Activate
-    } elseif ($py12) {
-        dtsciencep12\Scripts\Activate
-    } else {
-        Write-Host "No virtual environment specified. Use -py13 or -py12."
-    }
+#     # Activate the virtual environment
+#     if ($py13) {
+#         dtscience\Scripts\Activate
+#     } elseif ($py12) {
+#         dtsciencep12\Scripts\Activate
+#     } else {
+#         Write-Host "No virtual environment specified. Use -py13 or -py12."
+#     }
 
-    # Navigate back to the original location
-    Set-Location -Path $currentLocation
-}
+#     # Navigate back to the original location
+#     Set-Location -Path $currentLocation
+# }
 
-Set-Alias -Name dup -Value Remove-HistoryDuplicates
-Set-Alias -Name startVM -Value start-environment
+# Set-Alias -Name dup -Value Remove-HistoryDuplicates
+# Set-Alias -Name startVM -Value start-environment

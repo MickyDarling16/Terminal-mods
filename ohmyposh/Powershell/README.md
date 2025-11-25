@@ -24,14 +24,14 @@ This folder will
 
     NOTE: ONLY THE FOLDER MATTERS. i.e Should Exist
 
-    - Check if it already exists.
-    ```sh
-    Test-Path $PROFILE
-    ```
+    - Check if the folder already exists.
+        ```sh
+        Test-Path (Split-Path $PROFILE)
+        ```
     - Create if it does not
-    ```sh
-    New-Item -Path (Split-Path $PROFILE) -ItemType Directory
-    ```
+        ```sh
+        New-Item -Path (Split-Path $PROFILE) -ItemType Directory
+        ```
 
 3. Create the symbolic link:
     ```sh

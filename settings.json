@@ -105,7 +105,7 @@
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "colorScheme": "Ubuntu",
+                "colorScheme": "Campbell",
                 "commandline": "C:\\WINDOWS\\system32\\wsl.exe --distribution-id {24b9371c-1856-438f-a4b6-125b9c857681} --cd ~",
                 "cursorShape": "bar",
                 "font": 

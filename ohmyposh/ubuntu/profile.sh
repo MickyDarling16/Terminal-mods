@@ -1,8 +1,8 @@
 # This file contains configurations to be added to your ~/.bashrc file.
 # Oh My Posh initialization
 # Ensure thm1.omp.json is copied to ~/.poshthemes/
-if command -v oh-my-posh >/dev/null 2>&1 && [ -f "/mnt/c/Users/micha/Desktop/Terminal-mods/Powershell/ohMyPosh/Poshthemes/thm1.omp.json" ]; then
-    eval "$(oh-my-posh init bash --config /mnt/c/Users/micha/Desktop/Terminal-mods/Powershell/ohMyPosh/Poshthemes/thm1.omp.json)"
+if command -v oh-my-posh >/dev/null 2>&1 && [ -f "/home/micha/Terminal-mods/ohmyposh/Poshthemes/thm1.omp.json" ]; then
+    eval "$(oh-my-posh init bash --config /home/micha/Terminal-mods/ohmyposh/Poshthemes/thm1.omp.json)"
 else
     echo "Warning: oh-my-posh or the theme config file is missing."
 fi
@@ -69,3 +69,33 @@ alias startVM="start-environment" # Alias for starting virtual environments
 # alias dup='history -d $(history | cut -c 8- | sort -u | uniq -d | awk "{print \$1}")'
 # However, this is more complex and might not be what the user expects.
 # Sticking to the HISTCONTROL for simplicity.
+
+
+# Eza Aliases (Enhanced ls)
+if command -v eza >/dev/null 2>&1; then
+    alias ls='eza --icons'
+    alias ll='eza -al --icons --group-directories-first'
+    alias lt='eza --tree --level=2 --icons'
+fi
+# This setting is for git passkey storage ssh-agen
+env=~/.ssh/agent.env
+
+agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    . "$env" >| /dev/null ;
+}
+
+agent_load_env
+
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+    agent_start
+    ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+    ssh-add
+fi
+
+unset env

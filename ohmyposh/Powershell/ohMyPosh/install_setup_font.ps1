@@ -39,6 +39,6 @@ if (-not $fontInstalled) {
 }
 Write-Host "Oh My Posh and Nerd Font installation script completed."
 
-$scriptsPath = "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\misc_modules.ps1"
+$scriptsPath = "C:\Users\micha\Desktop\Terminal-mods\ohmyposh\Powershell\ohMyPosh\misc_modules.ps1"
 Write-Host "Moving on to misc_modules.ps1 script..."
 # End of script

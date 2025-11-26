@@ -1,11 +1,18 @@
 Write-Host "Running Modules installation script... misc_modules.ps1"
 
-# Check if Terminal-Icons Module is already installed
+Write-Host "Running Modules installation script... misc_modules.ps1"
+
+# 1. Trust PSGallery first (Fixes the "Untrusted repository" prompt)
+Write-Host "Setting PSGallery to Trusted..."
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted -ErrorAction SilentlyContinue
+
+# 2. Terminal-Icons
 Write-Host "Checking for Terminal-Icons module..."
 if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
     Write-Host "Terminal-Icons is not installed. Installing now..."
     try {
-        Install-Module -Name Terminal-Icons -Repository PSGallery -Scope CurrentUser -ErrorAction Stop
+        # Removed the invalid '-y' flag
+        Install-Module -Name Terminal-Icons -Repository PSGallery -Scope CurrentUser -Force -ErrorAction Stop
         Write-Host "Terminal-Icons installed successfully."
     } catch {
         Write-Host "Failed to install Terminal-Icons: $_"
@@ -14,12 +21,14 @@ if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
     Write-Host "Terminal-Icons is already installed."
 }
 
-# Check if PSReadLine Module is already installed and up to date
+# 3. PSReadLine
 Write-Host "Checking for PSReadLine module..."
 $psReadLineModule = Get-Module -ListAvailable -Name PSReadLine | Sort-Object Version -Descending | Select-Object -First 1
+
 if (-not $psReadLineModule -or $psReadLineModule.Version -lt [Version]"2.2.0") {
     Write-Host "PSReadLine needs updating. Attempting to install/update..."
     try {
+        # Removed the invalid '-y' flag
         Install-Module -Name PSReadLine -Repository PSGallery -Scope CurrentUser -Force -AllowClobber -ErrorAction Stop
         Write-Host "PSReadLine installed/updated successfully."
     } catch {
@@ -28,10 +37,12 @@ if (-not $psReadLineModule -or $psReadLineModule.Version -lt [Version]"2.2.0") {
 } else {
     Write-Host "PSReadLine is already installed and up to date."
 }
-# Import the module
+
+# 4. Import Module (Fixed the missing command)
 if (-not (Get-Module -Name PSReadLine)) {
     try {
-         -Force -ErrorAction Stop
+        # Added 'Import-Module' here
+        Import-Module PSReadLine -Force -ErrorAction Stop
         Write-Host "PSReadLine module imported."
     } catch {
         Write-Host "Failed to import PSReadLine module: $_"
@@ -43,15 +54,22 @@ if (-not (Get-Module -Name PSReadLine)) {
 Write-Host "Checking for Zoxide..."
 if (-not (Get-Command zoxide -ErrorAction SilentlyContinue)) {
     Write-Host "Zoxide not found. Installing via winget..."
-    try {
-        winget install --id zoxide.zoxide --scope user --accept-package-agreements --accept-source-agreements
-        Write-Host "Zoxide installed successfully."
-    } catch {
-        Write-Host "Failed to install Zoxide: $_"
+
+    # 1. Use the correct ID (ajeetdsouza.zoxide)
+    winget install --id ajeetdsouza.zoxide --accept-package-agreements --accept-source-agreements
+
+    # 2. Check $LASTEXITCODE to see if the external command actually worked
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "Zoxide installed successfully." -ForegroundColor Green
+    } else {
+        Write-Host "Failed to install Zoxide. Winget returned exit code $LASTEXITCODE." -ForegroundColor Red
+        # Stop script here so we don't add broken config to profile
+        return
     }
 } else {
     Write-Host "Zoxide is already installed."
 }
+
 # Add to profile if not already there
 $profileContent = Get-Content $PROFILE -ErrorAction SilentlyContinue
 if (-not ($profileContent -match "zoxide init")) {

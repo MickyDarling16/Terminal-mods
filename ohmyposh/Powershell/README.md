@@ -35,19 +35,21 @@ This folder will
 
 3. Create the symbolic link:
     ```sh
-    New-Item -ItemType SymbolicLink -Path $PROFILE -Target $customProfilePATH
+    New-Item -ItemType SymbolicLink -Path $PROFILE -Target $customProfileFULLPATH
     ```
 
-4. Run the `CUSTOM PROFILE` file.
+4. Install all required Sodtware (ohMyPosh, Terminal-Icons, PSReadline, zoxide)
+    ```sh
+    installations.ps1
+    ```
+
+6. Copy and Paste custom Windows Terminal settings.json into the one being used.
+
+5. Run the `CUSTOM PROFILE` file.
     ```sh
     $customProfilePATH
     ```
 
-5. Create symbolic link for Terminal Settings file:
-    ```sh
-    New-Item -ItemType SymbolicLink -Path $PROFILE -Target $customProfilePATH
-    ```
-
-6. Verify that the scripts have been executed successfully by checking the expected changes or outputs.
+7. Verify that the scripts have been executed successfully by checking the expected changes or outputs.
 
 > Note: Since the custom profile has code to run all scripts, the symbolic link will ensure that everything runs when the terminal is opened.

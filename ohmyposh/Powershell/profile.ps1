@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config "C:\Users\micha\Desktop\Terminal-mods\Powershell\ohMyPosh\Poshthemes\thm1.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "C:\Users\micha\Desktop\Terminal-mods\ohmyposh\Poshthemes\thm1.omp.json" | Invoke-Expression
 
 # Import the Terminal-Icons module
 Import-Module -Name Terminal-Icons -Force -ErrorAction Stop

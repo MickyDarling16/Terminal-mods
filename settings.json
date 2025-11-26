@@ -30,7 +30,7 @@
     "keybindings": 
     [
         {
-            "id": "Terminal.CloseTab",
+            "id": "User.closePane",
             "keys": "ctrl+w"
         },
         {
@@ -54,10 +54,6 @@
             "keys": "ctrl+t"
         },
         {
-            "id": "User.closePane",
-            "keys": "ctrl+w"
-        },
-        {
             "id": "Terminal.ReopenClosedTab",
             "keys": "ctrl+shift+t"
         }
@@ -73,7 +69,7 @@
     {
         "defaults": 
         {
-            "backgroundImage": "C:\\Users\\micha\\Desktop\\Terminal-mods\\background\\tron.jpg",
+            "backgroundImage": "C:\\Users\\micha\\Desktop\\Terminal-mods\\ohmyposh\\background\\tron.jpg",
             "backgroundImageOpacity": 0.32,
             "closeOnExit": "graceful",
             "font": 
@@ -103,22 +99,25 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": true,
-                "name": "Git Bash",
-                "source": "Git"
-            },
-            {
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "guid": "{1174bde1-7da4-5a74-a9f4-c37bab3bd0a8}",
+                "colorScheme": "Ubuntu",
+                "commandline": "C:\\WINDOWS\\system32\\wsl.exe --distribution-id {24b9371c-1856-438f-a4b6-125b9c857681} --cd ~",
+                "cursorShape": "bar",
+                "font": 
+                {
+                    "size": 13
+                },
+                "guid": "{4c641c7b-a73a-4fee-8362-811823e3aeeb}",
                 "hidden": false,
-                "name": "Ubuntu",
-                "source": "Microsoft.WSL"
+                "icon": "C:\\Users\\micha\\AppData\\Local\\wsl\\{24b9371c-1856-438f-a4b6-125b9c857681}\\shortcut.ico",
+                "name": "Ubuntu-24.04",
+                "pathTranslationStyle": "wsl",
+                "suppressApplicationTitle": true
             }
         ]
     },

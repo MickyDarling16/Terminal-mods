@@ -99,3 +99,7 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
+
+# Apache Spark Environment Variables
+export SPARK_HOME="/path/to/spark/spark-3.x.x-bin-hadoopX"
+export PATH=$PATH:$SPARK_HOME/bin

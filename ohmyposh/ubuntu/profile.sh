@@ -101,5 +101,5 @@ fi
 unset env
 
 # Apache Spark Environment Variables
-export SPARK_HOME="/path/to/spark/spark-3.x.x-bin-hadoopX"
+export SPARK_HOME="/home/micha/projects/Coursera/course12/spark-3.5.7-bin-hadoop3-scala2.13"
 export PATH=$PATH:$SPARK_HOME/bin

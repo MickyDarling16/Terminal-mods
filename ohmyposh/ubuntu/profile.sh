@@ -37,7 +37,7 @@ function start-environment {
     fi
 
     # Activate the virtual environment based on the argument
-    if [[ "$1" == "--py13" ]]; then
+    if [[ "$1" == "py13" ]]; then
         if [ -f "/home/micha/projects/dtscience/bin/activate" ]; then
             source /home/micha/projects/dtscience/bin/activate
             echo $VIRTUAL_ENV
@@ -45,7 +45,7 @@ function start-environment {
         else
             echo "Error: dtscience/bin/activate not found."
         fi
-    elif [[ "$1" == "--py12" ]]; then
+    elif [[ "$1" == "py12" ]]; then
         if [ -f "/home/micha/projects/dtsciencep12/bin/activate" ]; then
             source /home/micha/projects/dtsciencep12/bin/activate
             echo $VIRTUAL_ENV
@@ -54,7 +54,7 @@ function start-environment {
             echo "Error: dtsciencep12/bin/activate not found."
         fi
     else
-        echo "No virtual environment specified. Use --py13 or --py12."
+        echo "No virtual environment specified. Use py13 or py12."
     fi
 
     # Navigate back to the original location
@@ -62,7 +62,7 @@ function start-environment {
 }
 
 # Aliases
-alias startVM="start-environment" # Alias for starting virtual environments
+alias VM="start-environment" # Alias for starting virtual environments
 # Note: The 'Remove-HistoryDuplicates' function from PowerShell doesn't have a direct
 # simple Bash equivalent that's commonly aliased. The HISTCONTROL settings above
 # handle basic deduplication. If more advanced history management is needed,
@@ -102,15 +102,19 @@ fi
 
 unset env
 
-# Apache Spark Environment Variables
-export SPARK_HOME="/home/micha/projects/Coursera/course12/spark-3.5.7-bin-hadoop3-scala2.13"
-export PATH=$PATH:$SPARK_HOME/bin
+# # Apache Spark Environment Variables
+# export SPARK_HOME="/home/micha/projects/Coursera/course12/spark-3.5.7-bin-hadoop3-scala2.13"
+# export PATH=$PATH:$SPARK_HOME/bin
 
-# export JAVA_HOME="/usr/lib/jvm/java-1.17.0-openjdk-amd64"
-# export PATH=$PATH:$JAVA_HOME/bin
-# wget https://archive.apache.olsrg/dist/spark/spark-3.3.3/spark-3.3.3-bin-hadoop3.tgz && tar xf spark-3.3.3-bin-hadoop3.tgz && rm -rf spark-3.3.3-bin-hadoop3.tgz
-# export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
-# export SPARK_HOME=/home/project/spark-3.3.3-bin-hadoop3
+# # export JAVA_HOME="/usr/lib/jvm/java-1.17.0-openjdk-amd64"
+# # export PATH=$PATH:$JAVA_HOME/bin
+# # wget https://archive.apache.olsrg/dist/spark/spark-3.3.3/spark-3.3.3-bin-hadoop3.tgz && tar xf spark-3.3.3-bin-hadoop3.tgz && rm -rf spark-3.3.3-bin-hadoop3.tgz
+# # export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+# # export SPARK_HOME=/home/project/spark-3.3.3-bin-hadoop3
 
 
-export win='/mnt/c/Users/micha'
+# export win='/mnt/c/Users/micha'
+
+
+# Current Active Environment alias
+alias venv='echo $VIRTUAL_ENV'

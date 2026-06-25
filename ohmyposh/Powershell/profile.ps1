@@ -56,3 +56,27 @@ function Remove-HistoryDuplicates {
 
 # Set-Alias -Name dup -Value Remove-HistoryDuplicates
 # Set-Alias -Name startVM -Value start-environment
+# Create alias to activate the virtual environment in the current directory
+function Activate-Venv {
+    $currentLocation = (Get-Location).Path
+    $venvPath = Join-Path -Path $currentLocation -ChildPath "*\Scripts\Activate.ps1"
+
+    if (Test-Path -Path $venvPath) {
+        & $venvPath
+    } else {
+        Write-Host "No virtual environment found in the current directory."
+    }
+}
+Set-Alias -Name av -Value Activate-Venv
+
+# Set alias to check whether python virtual environment is activated and to display the current python version
+function Check-Venv {
+    if ($env:VIRTUAL_ENV) {
+        Write-Host "Virtual environment is activated: $($env:VIRTUAL_ENV)"
+        python --version
+    } else {
+        Write-Host "No virtual environment is currently activated."
+    }
+}
+Set-Alias -Name cv -Value Check-Venv
+
